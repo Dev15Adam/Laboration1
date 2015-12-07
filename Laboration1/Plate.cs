@@ -26,7 +26,6 @@ namespace Laboration1
         public Plate(int id, string name, string type) : base(id, name)
         {
             Type = type;
-            StockCount++;
         }
         public override string ToString()
         {

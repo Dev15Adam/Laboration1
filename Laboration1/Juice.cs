@@ -25,7 +25,6 @@ namespace Laboration1
         public Juice (int id, string name, string mark, string type) : base(id, name, mark)
         {
             Type = type;
-            StockCount++;
         }
 
         public override string ToString()

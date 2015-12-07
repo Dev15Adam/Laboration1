@@ -13,6 +13,7 @@ namespace Laboration1
         static void Main(string[] args)
         {
             Stock stock = new Stock();
+            int inputCount = 0;
 
             int selectedOption = 0;
             while (selectedOption != 4)
@@ -27,15 +28,18 @@ namespace Laboration1
                     {
                         case 1:
                             stock = CreateItem(stock);
+                            inputCount++;
                             break;
                         case 2:
+                            Console.WriteLine("Id of the item?");
+                            int id = int.Parse(Console.ReadLine());
 
                             break;
                         case 3:
-                            for (int i = 0; i < StockItem.StockCount; i++)
+                            for (int i = 0; i < inputCount; i++)
                             {
                                 if(stock[i] is EcoStockItem)
-                                    Console.WriteLine($"Eco: {stock[i]}");
+                                    Console.WriteLine($"Eco- {stock[i]}");
                                 else
                                     Console.WriteLine(stock[i]);
                             }
@@ -57,7 +61,7 @@ namespace Laboration1
             string plateOrJuice = Console.ReadLine();
             if (plateOrJuice != "juice" && plateOrJuice != "plate")
                 throw new Exception("Must be either plate or juice");
-            int id = StockItem.StockCount;
+            int id = 0; //placeholder
             Console.WriteLine("Name?");
             string name = Console.ReadLine();
             Console.WriteLine("Type?");
