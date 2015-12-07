@@ -10,7 +10,7 @@ namespace Laboration1
     {
         int id;
         string name;
-        int stockCount;
+        int stockCount;        
 
         public int Id
         {
@@ -45,7 +45,8 @@ namespace Laboration1
                     throw new Exception("Stockcount must be a positive value");
             }
         }
-
+        public static int Count { get; set; } = 0;
+        
         public StockItem(int id, string name)
         {
             Id = id;
