@@ -8,8 +8,6 @@ namespace Laboration1
 {
     class Program
     {
-
-
         static void Main(string[] args)
         {
             Stock stock = new Stock();
@@ -29,13 +27,23 @@ namespace Laboration1
                             stock = CreateItem(stock);
                             break;
                         case 2:
-
+                            int juiceCount = 0;
+                            int plateCount = 0;
+                            for (int i = 0; i < StockItem.StockCount; i++)
+                            {
+                                if (stock[i] is Juice)
+                                    juiceCount++;
+                                else if (stock[i] is Plate)
+                                    plateCount++;
+                            }
+                            Console.WriteLine($"There are {juiceCount} juices.");
+                            Console.WriteLine($"There are {plateCount} plates.");
                             break;
                         case 3:
                             for (int i = 0; i < StockItem.StockCount; i++)
                             {
                                 if(stock[i] is EcoStockItem)
-                                    Console.WriteLine($"Eco: {stock[i]}");
+                                    Console.WriteLine($"(Eco) {stock[i]}");
                                 else
                                     Console.WriteLine(stock[i]);
                             }
@@ -72,7 +80,6 @@ namespace Laboration1
                 stock.AddItem(new Plate(id, name, type));
             return stock;
         }
-
         private static void PrintMenu()
         {
             Console.WriteLine("1- Skapa vara");
