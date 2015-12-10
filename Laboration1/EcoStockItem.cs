@@ -15,7 +15,7 @@ namespace Laboration1
             get { return mark; }
             set
             {
-                if (value == "Krav" || value == "EG")
+                if (value.ToLower() == "krav" || value.ToLower() == "eg")
                     mark = value;
                 else
                     throw new Exception("Mark must be either 'Krav' or 'EG'");

@@ -25,6 +25,10 @@ namespace Laboration1
                     throw new Exception("Something went wrong");
             }
         }
+        public int Length
+        {
+            get { return items.Length; }
+        }
 
         public Stock()
         {
@@ -34,7 +38,10 @@ namespace Laboration1
         public void AddItem(StockItem item)
         {
             StockItem[] newItemsArray = new StockItem[items.Length + 1];
-            items.CopyTo(newItemsArray,0);
+            for (int i = 0; i < items.Length; i++)
+            {
+                newItemsArray[i] = items[i];
+            }
             newItemsArray[items.Length] = item;
             items = newItemsArray;
         }

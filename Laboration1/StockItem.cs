@@ -15,7 +15,7 @@ namespace Laboration1
         public int Id
         {
             get { return id; }
-            set
+            private set
             {
                 if (value >= 0)
                     id = value;
@@ -45,7 +45,6 @@ namespace Laboration1
                     throw new Exception("Stockcount must be a positive value");
             }
         }
-        public static int Count { get; set; } = 0;
         
         public StockItem(int id, string name)
         {

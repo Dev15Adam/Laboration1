@@ -15,7 +15,7 @@ namespace Laboration1
             get { return type; }
             set
             {
-                if (value == "Apple" || value == "Orange")
+                if (value.ToLower() == "apple" || value.ToLower() == "orange")
                     type = value;
                 else
                     throw new Exception("Type must be either 'Apple' or 'Orange'");
@@ -25,12 +25,8 @@ namespace Laboration1
         public Juice (int id, string name, string mark, string type) : base(id, name, mark)
         {
             Type = type;
-            Count++;
         }
 
-        public override string ToString()
-        {
-            return base.ToString() + $" Type:{Type}";
-        }
+        public override string ToString() => $"{base.ToString()} Type:{Type}";
     }
 }
