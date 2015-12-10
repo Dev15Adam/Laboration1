@@ -24,29 +24,13 @@ namespace Laboration1
                     switch (selectedOption)
                     {
                         case 1:
-                            stock = CreateItem(stock);
+                            CreateItem(stock);
                             break;
                         case 2:
-                            int juiceCount = 0;
-                            int plateCount = 0;
-                            for (int i = 0; i < StockItem.StockCount; i++)
-                            {
-                                if (stock[i] is Juice)
-                                    juiceCount++;
-                                else if (stock[i] is Plate)
-                                    plateCount++;
-                            }
-                            Console.WriteLine($"There are {juiceCount} juices.");
-                            Console.WriteLine($"There are {plateCount} plates.");
+                            Inventory(stock);
                             break;
                         case 3:
-                            for (int i = 0; i < StockItem.StockCount; i++)
-                            {
-                                if(stock[i] is EcoStockItem)
-                                    Console.WriteLine($"(Eco) {stock[i]}");
-                                else
-                                    Console.WriteLine(stock[i]);
-                            }
+                            PrintStock(stock);
                             break;
                         default:
                             break;
@@ -59,13 +43,33 @@ namespace Laboration1
             }
         }
 
-        private static Stock CreateItem(Stock stock)
+        private static void PrintStock(Stock stock)
+        {
+            for (int i = 0; i < stock.Length; i++)
+            {
+                if (stock[i] is EcoStockItem)
+                    Console.WriteLine($"{stock[i]} - Eco");
+                else
+                    Console.WriteLine(stock[i]);
+            }
+        }
+
+        private static void Inventory(Stock stock)
+        {
+            Console.WriteLine("Id of the item?");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine($"How many {stock.GetItem(id).Name} are there?");
+            int quantity = int.Parse(Console.ReadLine());
+            stock.GetItem(id).StockCount = quantity;
+        }
+
+        private static void CreateItem(Stock stock)
         {
             Console.WriteLine("Create plate or juice?");
             string plateOrJuice = Console.ReadLine();
-            if (plateOrJuice != "juice" && plateOrJuice != "plate")
+            if (plateOrJuice.ToLower() != "juice" && plateOrJuice.ToLower() != "plate")
                 throw new Exception("Must be either plate or juice");
-            int id = StockItem.StockCount;
+            int id = stock.Length;
             Console.WriteLine("Name?");
             string name = Console.ReadLine();
             Console.WriteLine("Type?");
@@ -78,8 +82,8 @@ namespace Laboration1
             }
             else
                 stock.AddItem(new Plate(id, name, type));
-            return stock;
         }
+
         private static void PrintMenu()
         {
             Console.WriteLine("1- Skapa vara");

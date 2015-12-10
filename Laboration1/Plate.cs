@@ -16,7 +16,7 @@ namespace Laboration1
             { return type; }
             set
             {
-                if (value == "Flat" || value == "Deep")
+                if (value.ToLower() == "flat" || value.ToLower() == "deep")
                     type = value;
                 else
                     throw new Exception("Type must be either 'Flat' or 'Deep'");
@@ -26,11 +26,7 @@ namespace Laboration1
         public Plate(int id, string name, string type) : base(id, name)
         {
             Type = type;
-            StockCount++;
         }
-        public override string ToString()
-        {
-            return base.ToString() + $" Type:{Type}";
-        }
+        public override string ToString() => $"{base.ToString()} Type:{Type}";
     }
 }

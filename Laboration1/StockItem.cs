@@ -10,12 +10,12 @@ namespace Laboration1
     {
         int id;
         string name;
-        static int stockCount;
+        int stockCount;        
 
         public int Id
         {
             get { return id; }
-            set
+            private set
             {
                 if (value >= 0)
                     id = value;
@@ -34,7 +34,7 @@ namespace Laboration1
                     throw new ArgumentNullException();
             }
         }
-        public static int StockCount
+        public int StockCount
         {
             get { return stockCount; }
             set
@@ -45,11 +45,7 @@ namespace Laboration1
                     throw new Exception("Stockcount must be a positive value");
             }
         }
-
-        static StockItem()
-        {
-            StockCount = 0;
-        }
+        
         public StockItem(int id, string name)
         {
             Id = id;
@@ -57,7 +53,7 @@ namespace Laboration1
         }
         public override string ToString()
         {
-            return $"Id:{Id} Name:{Name}";
+            return $"StockCount:{StockCount} Id:{Id} Name:{Name}";
         }
     }
 }
